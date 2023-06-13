@@ -1,5 +1,13 @@
 # news_aggregator
 
+<img width="1429" alt="Main" src="https://github.com/NikZaz/news_aggregator/assets/115639869/99647893-63ed-4920-9a62-c1f38ec09098">
+<img width="1432" alt="Main_2" src="https://github.com/NikZaz/news_aggregator/assets/115639869/1e99f909-5ec1-4fdb-ac68-6ae5efdee41c">
+<img width="1430" alt="Registration" src="https://github.com/NikZaz/news_aggregator/assets/115639869/6ab919f2-e6ed-4954-8385-2898a5b92a8d">
+<img width="1428" alt="Login" src="https://github.com/NikZaz/news_aggregator/assets/115639869/065d15c1-17f1-42dd-9ba4-1fd3a6d40a86">
+<img width="1426" alt="Create_post" src="https://github.com/NikZaz/news_aggregator/assets/115639869/b14cb9d0-48aa-4b35-bf6c-9660a88cf50a">
+
+
+
 News web application:
 This web application is designed for parsing and displaying a list of articles from the news resources Lenta.ru and RIA.ru.
 
