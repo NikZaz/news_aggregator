@@ -43,9 +43,9 @@ Clone the project repository.
 Navigate to the project directory.
 
 In the terminal, run the following command to start the application:
-
+```
 docker-compose up --build
-
+```
 Open a browser and go to http://....:8000 to access the application.
 
 
