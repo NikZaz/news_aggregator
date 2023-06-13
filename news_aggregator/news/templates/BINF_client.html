@@ -1,0 +1,141 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Новостной портал|БИНФ</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="container">
+                <ul class="header-item">
+                    <script class="date">
+                        var d = new Date();
+                        var days = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
+                        document.write(days[d.getDay()] + ", " + d.getDate() + " " + getMonthName(d.getMonth()) + " " +
+                            d.getFullYear());
+
+                        function getMonthName(monthIndex) {
+                            var months = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа",
+                                "Сентября", "Октября", "Ноября", "Декабря"
+                            ];
+                            return months[monthIndex];
+                        }
+                    </script>
+                    <a href="{% url 'index' %}" class="logo">
+                        <img src="{% static 'images/6.png' %}" alt="logo site" class="logo-img">
+                    </a>
+                    {% if user.is_authenticated %}
+                    {% if user.is_superuser %}
+                    <li class="header__menu-registration">
+                        <a class="header__menu-login-link-profile" href="{% url 'profile_admin' %}">
+                            <img class="header__menu-profile-img" src="{% static 'images/profile_icon.svg' %}"
+                                alt="Profile Icon">
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="header__menu-registration">
+                        <a class="header__menu-login-link-profile" href="{% url 'profile' %}">
+                            <img class="header__menu-profile-img" src="{% static 'images/profile_icon.svg' %}"
+                                alt="Profile Icon">
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% else %}
+                    <li class="header__menu-registration">
+                        <a class="header__menu-login-link" href="{% url 'registration' %}">Регистрация/</a>
+                        <a class="header__menu-login-link" href="{% url 'login' %}">Войти</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </header>
+        <section class="navigation">
+            <div class="container">
+                <ul class="nav__menu">
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Политика</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Спорт</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Экономика</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">В мире</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Общество</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Технологии</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Наука</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Финансы</a></li>
+                </ul>
+            </div>
+        </section>
+        <main class="main">
+            <div class="container">
+                <div class="BINF__info-item">
+                    <ul class="BINF__info-about">
+                        <h2 class="BINF__info-title">КЛИЕНТАМ</h2>
+                        <p class="BINF__info-text">
+                            Мы ценим наших клиентов и всегда стремимся предоставить им высококачественное информационное обслуживание. Независимо от того, являетесь ли вы средством массовой информации, национальным информационным агентством, крупной компанией или республиканским органом государственного управления, мы готовы удовлетворить ваши потребности в информации.
+                        </p>
+                        <p class="BINF__info-text">
+                            С нашими продуктами вы будете в курсе всех политических, экономических, культурных и спортивных событий страны. Мы предоставляем широкий спектр информационных продуктов, включая оперативную ленту новостей, ежедневные, еженедельные и ежемесячные информационные вестники. Благодаря нашему опыту работы на рынке информации и эксклюзивным возможностям освещения событий в Беларуси, мы гарантируем вам качество, достоверность и высокую конкурентоспособность наших продуктов.
+                        </p>
+                        <p class="BINF__info-text">
+                            Мы также предлагаем вам возможность получать информацию в режиме реального времени, чтобы быть в курсе самых актуальных событий. Мы понимаем важность быстроты и актуальности данных в современном информационном мире, и поэтому предлагаем вам надежный и оперативный источник информации.
+                        </p>
+                        <p class="BINF__info-text">
+                            Обратившись к нам, вы получите профессиональное и индивидуальное обслуживание. Наша команда готова ответить на ваши вопросы, предоставить дополнительные сведения о наших продуктах и услугах, а также помочь в выборе наиболее подходящего решения для вас и вашего бизнеса. Мы стремимся установить долгосрочные и взаимовыгодные отношения с нашими клиентами и гарантируем ваше полное удовлетворение.
+                        </p>
+                        <p class="BINF__info-text">
+                            Свяжитесь с нами сегодня, чтобы узнать больше о том, как мы можем помочь вам получить доступ к надежной, актуальной и достоверной информации. Мы с нетерпением ждем возможности быть вашим надежным информационным партнером.
+                        </p>
+                    </ul>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="container">
+                <nav class="footer__menu">
+                    <ul class="footer__menu-list">
+                        <li class="footer__menu-item">
+                            <a class="footer__menu-link" href="{% url 'binf_partnership'  %}">СОТРУДНИЧЕСТВО</a>
+                        </li>
+                    </ul>
+                    <ul class="footer__menu-list">
+                        <li class="footer__menu-item">
+                            <a class="footer__menu-link" href="{% url 'binf_advertisement'  %}">РЕКЛАМА</a>
+                        </li>
+                    </ul>
+                    <ul class="footer__menu-list">
+                        <li class="footer__menu-item">
+                            <a class="footer__menu-link" href="{% url 'binf_client'  %}">КЛИЕНТАМ</a>
+                        </li>
+                    </ul>
+                    <ul class="footer__menu-list">
+                        <li class="footer__menu-item">
+                            <a class="footer__menu-link" href="{% url 'binf_information'  %}">АГЕНТСТВО</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="footer__copy">
+                    <p class="footer__copy-text">
+                        БИНФ - Новости Беларуси, © Авторское право принадлежит БИНФ, 2023г.
+                    </p>
+                    <p class="footer__copy-text">
+                        Гиперссылка на источник обязательна.
+                    </p>
+                    <p class="footer__copy-text">
+                        Мы размещаем материалы рекламно-информационного характера
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="{% static 'js/script.js' %}" defer></script>
+
+</body>
+
+</html>

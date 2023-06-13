@@ -14,114 +14,120 @@
 
 <body>
     <div class="wrapper">
-      <header class="header">
-        <div class="container">
-          <ul class="header-item">
-            <script class="date">
-              var d = new Date();
-              var days = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
-              document.write(days[d.getDay()] + ", " + d.getDate() + " " + getMonthName(d.getMonth()) + " " + d.getFullYear());
-  
-              function getMonthName(monthIndex) {
-                var months = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
-                return months[monthIndex];
-              }
-            </script>
-            <a href="{% url 'index' %}" class="logo">
-              <img src="{% static 'images/6.png' %}" alt="logo site" class="logo-img">
-            </a>
-            <li class="header__menu-registration">
-                <a class="header__menu-login-link"  href="{% url 'registration' %}" >Регистрация</a>
-                <a class="header__menu-login-link"  href="{% url 'login' %}" >Войти</a>
-              </li>
-          </ul>
-        </div>
-      </header>
-      <section class="navigation">
-        <div class="container">
-          <ul class="nav__menu">
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">Политика</a></li>
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">Спорт</a></li>
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">Экономика</a></li>
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">В мире</a></li>
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">Общество</a></li>
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">Технологии</a></li>
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">Наука</a></li>
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">Финансы</a></li>
-          </ul>
-        </div>
-      </section>
-      <main class="main">
-        <div class="container">
-            <div class="auth__form-login" id="login-form">
-    
-                    <form class="auth__form-log" action="{% url 'login' %}" method="POST" id="login" class="auth__form-log">
+        <header class="header">
+            <div class="container">
+                <ul class="header-item">
+                    <script class="date">
+                        var d = new Date();
+                        var days = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
+                        document.write(days[d.getDay()] + ", " + d.getDate() + " " + getMonthName(d.getMonth()) + " " +
+                            d.getFullYear());
+
+                        function getMonthName(monthIndex) {
+                            var months = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа",
+                                "Сентября", "Октября", "Ноября", "Декабря"
+                            ];
+                            return months[monthIndex];
+                        }
+                    </script>
+                    <a href="{% url 'index' %}" class="logo">
+                        <img src="{% static 'images/6.png' %}" alt="logo site" class="logo-img">
+                    </a>
+                    <li class="header__menu-registration">
+                        <a class="header__menu-login-link" href="{% url 'registration' %}">Регистрация/</a>
+                        <a class="header__menu-login-link" href="{% url 'login' %}">Войти</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <section class="navigation">
+            <div class="container">
+                <ul class="nav__menu">
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Политика</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Спорт</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Экономика</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">В мире</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Общество</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Технологии</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Наука</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Финансы</a></li>
+                </ul>
+            </div>
+        </section>
+        <main class="main">
+            <div class="container">
+                <div class="auth__form-login" id="login-form">
+
+                    <form class="auth__form-log" action="{% url 'login' %}" method="POST" id="login"
+                        class="auth__form-log">
                         <h2 class="auth__form-title">Вход</h2>
 
                         {% if messages %}
-                            <ul class="messages">
-                                {% for message in messages %}
-                                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
                                 {% endfor %}
-                            </ul>
+                        </ul>
                         {% endif %}
 
                         {% csrf_token %}
 
                         <label class="auth__form-input-title" for="username">Имя пользователя:</label>
-                        <input class="auth__form-input-field" type="text" name="username" id="username" placeholder="Ваше имя пользователя"
+                        <input class="auth__form-input-field" type="text" name="username" id="username"
+                            placeholder="Ваше имя пользователя" <label class="auth__form-input-title"
+                            for="password">Пароль:</label>
+                        <input class="auth__form-input-field" type="password" name="password" id="password"
+                            placeholder="Ваш пароль">
 
-                        <label class="auth__form-input-title" for="password">Пароль:</label>
-                        <input class="auth__form-input-field" type="password" name="password" id="password" placeholder="Ваш пароль">
-                
-                        <p>Еще не зарегистрированы? <a href="/registration/" id="switch-to-registration">Зарегистрироваться</a></p>
+                        <p>Еще не зарегистрированы? <a href="/registration/"
+                                id="switch-to-registration">Зарегистрироваться</a></p>
 
                         <button type="submit">Войти</button>
-                        
-                    </form>
-            </div>
-        </div>
-    </main>
-      <footer class="footer">
-        <div class="container">
-            <nav class="footer__menu">
-                <ul class="footer__menu-list">
-                    <li class="footer__menu-item">
-                        <a class="footer__menu-link" href="#">СОТРУДНИЧЕСТВО</a>
-                    </li>
-                </ul>
-                <ul class="footer__menu-list">
-                    <li class="footer__menu-item">
-                        <a class="footer__menu-link" href="#">РЕКЛАМА</a>
-                    </li>
-                </ul>
-                <ul class="footer__menu-list">
-                    <li class="footer__menu-item">
-                        <a class="footer__menu-link" href="#">КЛИЕНТАМ</a>
-                    </li>
-                </ul>
-                <ul class="footer__menu-list">
-                    <li class="footer__menu-item">
-                        <a class="footer__menu-link" href="#">АГЕНТСТВО</a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="footer__copy">
-                <p class="footer__copy-text">
-                    БИНФ - Новости Беларуси, © Авторское право принадлежит БИНФ, 2023г.
-                </p>
-                <p class="footer__copy-text">
-                    Гиперссылка на источник обязательна.
-                </p>
-                <p class="footer__copy-text">
-                    Мы размещаем материалы рекламно-информационного характера
-                </p>
-            </div>
-        </div>
-    </footer>
 
-    <script src="{% static 'js/script.js' %}" defer></script>
-    
+                    </form>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="container">
+                <nav class="footer__menu">
+                    <ul class="footer__menu-list">
+                        <li class="footer__menu-item">
+                            <a class="footer__menu-link" href="{% url 'binf_partnership'  %}">СОТРУДНИЧЕСТВО</a>
+                        </li>
+                    </ul>
+                    <ul class="footer__menu-list">
+                        <li class="footer__menu-item">
+                            <a class="footer__menu-link" href="{% url 'binf_advertisement'  %}">РЕКЛАМА</a>
+                        </li>
+                    </ul>
+                    <ul class="footer__menu-list">
+                        <li class="footer__menu-item">
+                            <a class="footer__menu-link" href="{% url 'binf_client'  %}">КЛИЕНТАМ</a>
+                        </li>
+                    </ul>
+                    <ul class="footer__menu-list">
+                        <li class="footer__menu-item">
+                            <a class="footer__menu-link" href="{% url 'binf_information'  %}">АГЕНТСТВО</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="footer__copy">
+                    <p class="footer__copy-text">
+                        БИНФ - Новости Беларуси, © Авторское право принадлежит БИНФ, 2023г.
+                    </p>
+                    <p class="footer__copy-text">
+                        Гиперссылка на источник обязательна.
+                    </p>
+                    <p class="footer__copy-text">
+                        Мы размещаем материалы рекламно-информационного характера
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="{% static 'js/script.js' %}" defer></script>
+
 </body>
 
 </html>

@@ -14,16 +14,19 @@
 
 <body>
     <div class="wrapper">
-      <header class="header">
+        <header class="header">
             <div class="container">
                 <ul class="header-item">
                     <script class="date">
                         var d = new Date();
                         var days = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
-                        document.write(days[d.getDay()] + ", " + d.getDate() + " " + getMonthName(d.getMonth()) + " " + d.getFullYear());
+                        document.write(days[d.getDay()] + ", " + d.getDate() + " " + getMonthName(d.getMonth()) + " " +
+                            d.getFullYear());
 
                         function getMonthName(monthIndex) {
-                            var months = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
+                            var months = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа",
+                                "Сентября", "Октября", "Ноября", "Декабря"
+                            ];
                             return months[monthIndex];
                         }
                     </script>
@@ -33,91 +36,105 @@
                     {% if user.is_authenticated %}
                     {% if user.is_superuser %}
                     <li class="header__menu-registration">
-                        <a class="header__menu-login-link-profile"  href="{% url 'profile_admin' %}" >
-                            <img class="header__menu-profile-img" src="{% static 'images/profile_icon.svg' %}" alt="Profile Icon">
+                        <a class="header__menu-login-link-profile" href="{% url 'profile_admin' %}">
+                            <img class="header__menu-profile-img" src="{% static 'images/profile_icon.svg' %}"
+                                alt="Profile Icon">
                         </a>
                     </li>
                     {% else %}
                     <li class="header__menu-registration">
-                        <a class="header__menu-login-link-profile"  href="{% url 'profile' %}" >
-                            <img class="header__menu-profile-img" src="{% static 'images/profile_icon.svg' %}" alt="Profile Icon">
+                        <a class="header__menu-login-link-profile" href="{% url 'profile' %}">
+                            <img class="header__menu-profile-img" src="{% static 'images/profile_icon.svg' %}"
+                                alt="Profile Icon">
                         </a>
                     </li>
                     {% endif %}
                     {% else %}
                     <li class="header__menu-registration">
-                        <a class="header__menu-login-link"  href="{% url 'registration' %}" >Регистрация</a>
-                        <a class="header__menu-login-link"  href="{% url 'login' %}" >Войти</a>
+                        <a class="header__menu-login-link" href="{% url 'registration' %}">Регистрация/</a>
+                        <a class="header__menu-login-link" href="{% url 'login' %}">Войти</a>
                     </li>
                     {% endif %}
                 </ul>
             </div>
         </header>
-      <section class="navigation">
-        <div class="container">
-          <ul class="nav__menu">
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">Политика</a></li>
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">Спорт</a></li>
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">Экономика</a></li>
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">В мире</a></li>
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">Общество</a></li>
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">Технологии</a></li>
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">Наука</a></li>
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">Финансы</a></li>
-          </ul>
-        </div>
-      </section>
-      <main class="main">
-        <div class="container">
-                <li class="main__menu-profile-item">
-                    <a class="main__menu-profile-link"  href="{% url 'notice' %}" >Уведомления</a>
-                    <a class="main__menu-profile-link"  href="{% url 'moder_post' %}" >Модерация</a>
-                    <a class="main__menu-profile-link" href="{% url 'create_post' %}">Разместить новость</a>
-                    <a class="main__menu-profile-link"  href="{% url 'my_posts' %}" >Мои посты</a>
-                    <a class="main__menu-profile-link"  href="{% url 'logout' %}" >Выйти</a>
-                </li>
-          </div>x
-      </main>
-      <footer class="footer">
-        <div class="container">
-            <nav class="footer__menu">
-                <ul class="footer__menu-list">
-                    <li class="footer__menu-item">
-                        <a class="footer__menu-link" href="#">СОТРУДНИЧЕСТВО</a>
-                    </li>
+        <section class="navigation">
+            <div class="container">
+                <ul class="nav__menu">
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Политика</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Спорт</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Экономика</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">В мире</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Общество</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Технологии</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Наука</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Финансы</a></li>
                 </ul>
-                <ul class="footer__menu-list">
-                    <li class="footer__menu-item">
-                        <a class="footer__menu-link" href="#">РЕКЛАМА</a>
-                    </li>
-                </ul>
-                <ul class="footer__menu-list">
-                    <li class="footer__menu-item">
-                        <a class="footer__menu-link" href="#">КЛИЕНТАМ</a>
-                    </li>
-                </ul>
-                <ul class="footer__menu-list">
-                    <li class="footer__menu-item">
-                        <a class="footer__menu-link" href="#">АГЕНТСТВО</a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="footer__copy">
-                <p class="footer__copy-text">
-                    БИНФ - Новости Беларуси, © Авторское право принадлежит БИНФ, 2023г.
-                </p>
-                <p class="footer__copy-text">
-                    Гиперссылка на источник обязательна.
-                </p>
-                <p class="footer__copy-text">
-                    Мы размещаем материалы рекламно-информационного характера
-                </p>
             </div>
-        </div>
-    </footer>
+        </section>
+        <main class="main">
+            <div class="container">
+                <div class="admin__item">
+                    <li class="main__menu-profile-item">
+                        <a class="main__menu-profile-link" href="{% url 'moder_post' %}">Модерация</a>
+                        <a class="main__menu-profile-link" href="{% url 'create_post' %}">Разместить новость</a>
+                        <a class="main__menu-profile-link" href="{% url 'logout' %}">Выйти</a>
+                        {% if notification %}
+                        <div class="notification" id="notification">
+                            {{ notification }}
+                            <a href="#" onclick="closeNotification()" class="notification-close">✖</a>
+                        </div>
+                        {% endif %}
+                    </li>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="container">
+                <nav class="footer__menu">
+                    <ul class="footer__menu-list">
+                        <li class="footer__menu-item">
+                            <a class="footer__menu-link" href="{% url 'binf_partnership'  %}">СОТРУДНИЧЕСТВО</a>
+                        </li>
+                    </ul>
+                    <ul class="footer__menu-list">
+                        <li class="footer__menu-item">
+                            <a class="footer__menu-link" href="{% url 'binf_advertisement'  %}">РЕКЛАМА</a>
+                        </li>
+                    </ul>
+                    <ul class="footer__menu-list">
+                        <li class="footer__menu-item">
+                            <a class="footer__menu-link" href="{% url 'binf_client'  %}">КЛИЕНТАМ</a>
+                        </li>
+                    </ul>
+                    <ul class="footer__menu-list">
+                        <li class="footer__menu-item">
+                            <a class="footer__menu-link" href="{% url 'binf_information'  %}">АГЕНТСТВО</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="footer__copy">
+                    <p class="footer__copy-text">
+                        БИНФ - Новости Беларуси, © Авторское право принадлежит БИНФ, 2023г.
+                    </p>
+                    <p class="footer__copy-text">
+                        Гиперссылка на источник обязательна.
+                    </p>
+                    <p class="footer__copy-text">
+                        Мы размещаем материалы рекламно-информационного характера
+                    </p>
+                </div>
+            </div>
+        </footer>
 
-    <script src="{% static 'js/script.js' %}" defer></script>
-
+        <script src="{% static 'js/script.js' %}" defer></script>
+        <script>
+            function closeNotification() {
+                var notification = document.getElementById("notification");
+                notification.style.display = "none";
+            }
+        </script>
+    </div>
 </body>
 
 </html>

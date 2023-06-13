@@ -30,8 +30,9 @@ urlpatterns = [
     path('profile_admin/', views.profile_admin_view, name='profile_admin'),
     path('news/<int:news_id>/', views.news_detail, name='news_detail'),
     path('create_post/', views.create_post_view, name='create_post'),
-    path('edit_post/', views.edit_post_view, name='edit_post'),
     path('moder_post/', views.moder_post_view, name='moder_post'),
-    path('notice/', views.create_post_view, name='notice'),
-    path('my_posts/', views.my_posts_view, name='my_posts'),
+    path('binf_information/', views.binf_information_view, name='binf_information'),
+    path('binf_client/', views.binf_client_view, name='binf_client'),
+    path('binf_partnership/', views.binf_partnership_view, name='binf_partnership'),
+    path('binf_advertisement/', views.binf_advertisement_view, name='binf_advertisement'),
 ]

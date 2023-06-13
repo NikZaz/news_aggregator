@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link class="img__site" rel="icon" type="image/png" href="{% static 'images/6.png' %}">
     <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Новостной портал|БИНФ</title>
@@ -15,15 +16,17 @@
 <body>
     <div class="wrapper">
         <header class="header">
-            <div class="container">
-                <ul class="header-item">
+            <div class="container">                <ul class="header-item">
                     <script class="date">
                         var d = new Date();
                         var days = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
-                        document.write(days[d.getDay()] + ", " + d.getDate() + " " + getMonthName(d.getMonth()) + " " + d.getFullYear());
+                        document.write(days[d.getDay()] + ", " + d.getDate() + " " + getMonthName(d.getMonth()) + " " +
+                            d.getFullYear());
 
                         function getMonthName(monthIndex) {
-                            var months = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
+                            var months = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа",
+                                "Сентября", "Октября", "Ноября", "Декабря"
+                            ];
                             return months[monthIndex];
                         }
                     </script>
@@ -33,21 +36,23 @@
                     {% if user.is_authenticated %}
                     {% if user.is_superuser %}
                     <li class="header__menu-registration">
-                        <a class="header__menu-login-link-profile"  href="{% url 'profile_admin' %}" >
-                            <img class="header__menu-profile-img" src="{% static 'images/profile_icon.svg' %}" alt="Profile Icon">
+                        <a class="header__menu-login-link-profile" href="{% url 'profile_admin' %}">
+                            <img class="header__menu-profile-img" src="{% static 'images/profile_icon.svg' %}"
+                                alt="Profile Icon">
                         </a>
                     </li>
                     {% else %}
                     <li class="header__menu-registration">
-                        <a class="header__menu-login-link-profile"  href="{% url 'profile' %}" >
-                            <img class="header__menu-profile-img" src="{% static 'images/profile_icon.svg' %}" alt="Profile Icon">
+                        <a class="header__menu-login-link-profile" href="{% url 'profile' %}">
+                            <img class="header__menu-profile-img" src="{% static 'images/profile_icon.svg' %}"
+                                alt="Profile Icon">
                         </a>
                     </li>
                     {% endif %}
                     {% else %}
                     <li class="header__menu-registration">
-                        <a class="header__menu-login-link"  href="{% url 'registration' %}" >Регистрация</a>
-                        <a class="header__menu-login-link"  href="{% url 'login' %}" >Войти</a>
+                        <a class="header__menu-login-link" href="{% url 'registration' %}">Регистрация/</a>
+                        <a class="header__menu-login-link" href="{% url 'login' %}">Войти</a>
                     </li>
                     {% endif %}
                 </ul>
@@ -56,11 +61,14 @@
         <section class="navigation">
             <div class="container">
                 <ul class="nav__menu">
-                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Политика</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Политика</a>
+                    </li>
                     <li class="nav__menu-item"><a class="nav__menu-link" href="#">Спорт</a></li>
-                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Экономика</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Экономика</a>
+                    </li>
                     <li class="nav__menu-item"><a class="nav__menu-link" href="#">В мире</a></li>
-                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Общество</a></li>
+                    <li class="nav__menu-item"><a class="nav__menu-link" href="#">Общество</a>
+                    </li>
                     <li class="nav__menu-item"><a class="nav__menu-link" href="#">Технологии</a></li>
                     <li class="nav__menu-item"><a class="nav__menu-link" href="#">Наука</a></li>
                     <li class="nav__menu-item"><a class="nav__menu-link" href="#">Финансы</a></li>
@@ -68,36 +76,47 @@
             </div>
         </section>
         <main class="main">
-            {% for news_item in news %}
-            <div class="news-item">
-                <h2 class="news-item-title">{{ news_item.title }}</h2>
-                <a href="{% url 'news_detail' news_item.id %}" class="news-item-link">Узнать больше</a>  <!-- измененная ссылка -->
-                <img src="{{ news_item.image_url }}" alt="{{ news_item.title }}" class="news-item-image">
-                <p>Опубликовано: {{ news_item.published_date|date:"d F Y, H:i" }}</p>
+            <div class="container">
+                <div id="news-container">
+                    {% for news_item in news %}
+                    <div class="news-item{% if forloop.counter > 15 %} hidden-news{% endif %}">
+                        <div class="news-item-wrapper">
+                            <h2 class="news-item-title"><a
+                                    href="{% url 'news_detail' news_item.id %}">{{ news_item.title }}</a></h2>
+                            <img src="{{ news_item.image_url }}" alt="{{ news_item.title }}" class="news-item-image">
+                            <p>Опубликовано: {{ news_item.published_date|date:"d F Y, H:i" }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div id="show-more-container">
+                    {% if news|length > 15 %}
+                    <button class="more_news-button" id="show-more-button">Показать больше новостей</button>
+                    {% endif %}
+                </div>
             </div>
-            {% endfor %}
         </main>
         <footer class="footer">
             <div class="container">
                 <nav class="footer__menu">
                     <ul class="footer__menu-list">
                         <li class="footer__menu-item">
-                            <a class="footer__menu-link" href="#">СОТРУДНИЧЕСТВО</a>
+                            <a class="footer__menu-link" href="{% url 'binf_partnership'  %}">СОТРУДНИЧЕСТВО</a>
                         </li>
                     </ul>
                     <ul class="footer__menu-list">
                         <li class="footer__menu-item">
-                            <a class="footer__menu-link" href="#">РЕКЛАМА</a>
+                            <a class="footer__menu-link" href="{% url 'binf_advertisement'  %}">РЕКЛАМА</a>
                         </li>
                     </ul>
                     <ul class="footer__menu-list">
                         <li class="footer__menu-item">
-                            <a class="footer__menu-link" href="#">КЛИЕНТАМ</a>
+                            <a class="footer__menu-link" href="{% url 'binf_client'  %}">КЛИЕНТАМ</a>
                         </li>
                     </ul>
                     <ul class="footer__menu-list">
                         <li class="footer__menu-item">
-                            <a class="footer__menu-link" href="#">АГЕНТСТВО</a>
+                            <a class="footer__menu-link" href="{% url 'binf_information'  %}">АГЕНТСТВО</a>
                         </li>
                     </ul>
                 </nav>
@@ -114,9 +133,20 @@
                 </div>
             </div>
         </footer>
-
         <script src="{% static 'js/script.js' %}" defer></script>
-
+        <script>
+            document.getElementById('show-more-button').addEventListener('click', function() {
+                var hiddenNews = document.getElementsByClassName('hidden-news');
+                for (var i = 0; i < 5; i++) {
+                    if (hiddenNews[i]) {
+                        hiddenNews[i].classList.remove('hidden-news');
+                    } else {
+                        document.getElementById('show-more-button').style.display = 'none';
+                        break;
+                    }
+                }
+            });
+        </script>
     </div>
 </body>
 

@@ -4,99 +4,138 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Новостной портал|БИНФ</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <title>Новостной портал | БИНФ</title>
 </head>
 
 <body>
-    <div class="wrapper">
-      <header class="header">
-        <div class="container">
-          <ul class="header-item">
-            <script class="date">
-              var d = new Date();
-              var days = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
-              document.write(days[d.getDay()] + ", " + d.getDate() + " " + getMonthName(d.getMonth()) + " " + d.getFullYear());
-  
-              function getMonthName(monthIndex) {
-                var months = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
-                return months[monthIndex];
-              }
-            </script>
-            <a href="{% url 'index' %}" class="logo">
-              <img src="{% static 'images/6.png' %}" alt="logo site" class="logo-img">
-            </a>
-            {% if user.is_authenticated %}
-            <li class="header__menu-login-link-profile">
-              <a class="header__menu-login-link"  href="{% url 'profile' %}" ><img class="header__menu-profile-img" src="{% static 'images/profile_icon.svg' %}" alt="Profile Icon"></a>
-            </li>
-            {% else %}
-              <li class="header__menu-registration">
-              <a class="header__menu-login-link"  href="{% url 'registration' %}" >Регистрация</a>
-              <a class="header__menu-login-link"  href="{% url 'login' %}" >Войти</a>
-            </li>
-            {% endif %}
-          </ul>
-        </div>
-      </header>
-      <section class="navigation">
-        <div class="container">
-          <ul class="nav__menu">
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">Политика</a></li>
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">Спорт</a></li>
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">Экономика</a></li>
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">В мире</a></li>
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">Общество</a></li>
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">Технологии</a></li>
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">Наука</a></li>
-            <li class="nav__menu-item"><a class="nav__menu-link" href="#">Финансы</a></li>
-          </ul>
-        </div>
-      </section>
-      <main class="main">
+  <div class="wrapper">
+    <header class="header">
+      <div class="container">
+        <ul class="header-item">
+          <script class="date">
+            var d = new Date();
+            var days = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
+            document.write(days[d.getDay()] + ", " + d.getDate() + " " + getMonthName(d.getMonth()) + " " + d
+              .getFullYear());
 
-      </main>
-      <footer class="footer">
-        <div class="container">
-            <nav class="footer__menu">
-                <ul class="footer__menu-list">
-                    <li class="footer__menu-item">
-                        <a class="footer__menu-link" href="#">СОТРУДНИЧЕСТВО</a>
-                    </li>
-                </ul>
-                <ul class="footer__menu-list">
-                    <li class="footer__menu-item">
-                        <a class="footer__menu-link" href="#">РЕКЛАМА</a>
-                    </li>
-                </ul>
-                <ul class="footer__menu-list">
-                    <li class="footer__menu-item">
-                        <a class="footer__menu-link" href="#">КЛИЕНТАМ</a>
-                    </li>
-                </ul>
-                <ul class="footer__menu-list">
-                    <li class="footer__menu-item">
-                        <a class="footer__menu-link" href="#">АГЕНТСТВО</a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="footer__copy">
-                <p class="footer__copy-text">
-                    БИНФ - Новости Беларуси, © Авторское право принадлежит БИНФ, 2023г.
-                </p>
-                <p class="footer__copy-text">
-                    Гиперссылка на источник обязательна.
-                </p>
-                <p class="footer__copy-text">
-                    Мы размещаем материалы рекламно-информационного характера
-                </p>
-            </div>
+            function getMonthName(monthIndex) {
+              var months = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября",
+                "Октября", "Ноября", "Декабря"
+              ];
+              return months[monthIndex];
+            }
+          </script>
+          <a href="{% url 'index' %}" class="logo">
+            <img src="{% static 'images/6.png' %}" alt="logo site" class="logo-img">
+          </a>
+          {% if user.is_authenticated %}
+          <li class="header__menu-login-link-profile">
+            <a class="header__menu-login-link" href="{% url 'profile' %}"><img class="header__menu-profile-img"
+                src="{% static 'images/profile_icon.svg' %}" alt="Profile Icon"></a>
+          </li>
+          {% else %}
+          <li class="header__menu-registration">
+            <a class="header__menu-login-link" href="{% url 'registration' %}">Регистрация/</a>
+            <a class="header__menu-login-link" href="{% url 'login' %}">Войти</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </header>
+    <section class="navigation">
+      <div class="container">
+        <ul class="nav__menu">
+          <li class="nav__menu-item"><a class="nav__menu-link" href="#">Политика</a></li>
+          <li class="nav__menu-item"><a class="nav__menu-link" href="#">Спорт</a></li>
+          <li class="nav__menu-item"><a class="nav__menu-link" href="#">Экономика</a></li>
+          <li class="nav__menu-item"><a class="nav__menu-link" href="#">В мире</a></li>
+          <li class="nav__menu-item"><a class="nav__menu-link" href="#">Общество</a></li>
+          <li class="nav__menu-item"><a class="nav__menu-link" href="#">Технологии</a></li>
+          <li class="nav__menu-item"><a class="nav__menu-link" href="#">Наука</a></li>
+          <li class="nav__menu-item"><a class="nav__menu-link" href="#">Финансы</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <main class="main">
+      <div class="container">
+        <div class="moder__item">
+          <h1 class="moder__news-title">Модерация новостей</h1>
+          <div class="moder__news-list">
+            {% for user_news in user_news %}
+            <li class="moder__news-list-item">
+              <h2>{{ user_news.title }}</h2>
+              <img src="{{ user_news.image_url }}" alt="{{ user_news.title }}" class="moder__item-image">
+              <p>{{ user_news.full_text }}</p>
+              <form method="POST" action="{% url 'moder_post' %}">
+                {% csrf_token %}
+                <input type="hidden" name="user_news_id" value="{{ user_news.id }}">
+                <div class="moder__decision">
+                  <label>
+                    <input type="radio" name="moderation_decision" value="approve">
+                    Принять
+                  </label>
+                  <label>
+                    <input type="radio" name="moderation_decision" value="reject">
+                    Отклонить
+                  </label>
+                </div>
+                <div class="moder__comment-text">
+                  <label for="comment">Комментарий:</label>
+                  <textarea id="comment" name="comment" rows="4" cols="50" required></textarea>
+                </div>
+                <button class="moder__submit-button" type="submit">Отправить</button>
+              </form>
+            </li>
+            {% endfor %}
+          </div>
         </div>
-    </footer>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+          <nav class="footer__menu">
+              <ul class="footer__menu-list">
+                  <li class="footer__menu-item">
+                      <a class="footer__menu-link" href="{% url 'binf_partnership'  %}">СОТРУДНИЧЕСТВО</a>
+                  </li>
+              </ul>
+              <ul class="footer__menu-list">
+                  <li class="footer__menu-item">
+                      <a class="footer__menu-link" href="{% url 'binf_advertisement'  %}">РЕКЛАМА</a>
+                  </li>
+              </ul>
+              <ul class="footer__menu-list">
+                  <li class="footer__menu-item">
+                      <a class="footer__menu-link" href="{% url 'binf_client'  %}">КЛИЕНТАМ</a>
+                  </li>
+              </ul>
+              <ul class="footer__menu-list">
+                  <li class="footer__menu-item">
+                      <a class="footer__menu-link" href="{% url 'binf_information'  %}">АГЕНТСТВО</a>
+                  </li>
+              </ul>
+          </nav>
+          <div class="footer__copy">
+              <p class="footer__copy-text">
+                  БИНФ - Новости Беларуси, © Авторское право принадлежит БИНФ, 2023г.
+              </p>
+              <p class="footer__copy-text">
+                  Гиперссылка на источник обязательна.
+              </p>
+              <p class="footer__copy-text">
+                  Мы размещаем материалы рекламно-информационного характера
+              </p>
+          </div>
+      </div>
+  </footer>
 
     <script src="{% static 'js/script.js' %}" defer></script>
 
